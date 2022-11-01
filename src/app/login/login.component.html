@@ -1,0 +1,22 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <form (submit)="login(data.value)" #data="ngForm">
+                <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="email" id="username" ngModel class="form-control" >
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" ngModel>
+                        <button type="submit" class="btn btn-primary">Login</button>
+            
+                </div>
+            
+            
+            </form>
+
+        </div>
+    </div>
+</div>
+
+

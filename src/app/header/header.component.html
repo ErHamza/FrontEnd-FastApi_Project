@@ -1,0 +1,68 @@
+
+
+
+
+
+<div class="bar">
+    
+    <ul>
+        <div
+        class="logo">
+        
+        <li><a routerLink="home"><fa-icon [icon]="icon1" style="font-size: 15px;"></fa-icon>Home
+            
+        </a> </li>
+        <li><a href=# routerLink="notes/mynotes"><fa-icon [icon]="note"></fa-icon> 
+            My Notes
+        </a></li>
+        <li>
+            <a href="#" routerLink="addnote"><fa-icon [icon]="addnote"></fa-icon>Add Note</a>
+            </li>
+        <li >
+            <a href="#" routerLink="about"><fa-icon [icon]="about"></fa-icon>About</a>
+            
+        </li>
+    
+    </div>
+        
+    
+        <li *ngIf="!isAuthenticated" style="float: right;">
+            <a href="#" routerLink="signup">Sign Up</a>
+            
+        </li>
+        <li *ngIf="!isAuthenticated" style="float: right;">
+            <a href="#" routerLink="login">Login
+                
+            </a>
+            
+        </li>
+        <li *ngIf="isAuthenticated" style="float: right; ">
+            <span style="color:blue; margin-right: 10px;">{{username}}</span>
+    
+            <a (click)="logo()" style="color: red;">Logout <fa-icon [icon]="poweroff"></fa-icon>
+                
+                
+            </a>
+            
+        </li>
+        
+    </ul>
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+

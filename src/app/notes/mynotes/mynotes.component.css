@@ -1,0 +1,15 @@
+body{
+    background-color: rgb(150, 150, 217);
+}
+
+.nshow{
+    display: none;
+}
+.center {
+    background-color: lightblue;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    
+    
+  }

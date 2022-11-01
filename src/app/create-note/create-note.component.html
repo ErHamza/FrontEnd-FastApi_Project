@@ -1,0 +1,13 @@
+<form class="form-group" (submit)="addNote(values.value)" #values="ngForm">
+
+    <label>Note Name</label>
+    <input name="name" type="text" class="form-control" ngModel
+    required>
+    <label>Content</label>
+    <textarea
+    required name="content" class="form-control" cols="4" ngModel ></textarea>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!values.valid">Add Note</button>
+    
+
+</form>

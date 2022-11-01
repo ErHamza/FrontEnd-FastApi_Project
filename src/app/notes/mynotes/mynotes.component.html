@@ -1,0 +1,66 @@
+<!-- <ul
+class="list-group" *ngFor="let post of postsList">
+<li class="list-group-item">{{post.content}}</li>
+<hr>
+</ul> -->
+
+<div class="center"
+ *ngIf="postsList?.length==0">
+  <p>No content to show</p>
+
+</div>
+<div class="row">
+
+  <div *ngFor="let post of postsList;let i=index; trackBy:trackById" class="col-9 card mb-3" 
+  style="max-width: 30rem;min-height: 100px; background-color:#FFF7E9; margin-right: 60px;" >
+
+    
+    <div class="card-header" style="color: black;"><p *ngIf="post.post_id!=Toedit()">{{post.post_name}}</p>
+      <input type="text" cols="2" style="background-color:whitesmoke ; border-radius: 10px; width: 100%;"
+      [placeholder]='post.post_name' *ngIf="post.post_id===Toedit()" ngModel name="name" [ngModel]='post.post_name'
+      #newName>
+    
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text" *ngIf="post.post_id!=Toedit()">{{post.content}}</p>
+      <textarea type="text" cols="2" style="background-color:whitesmoke; border-radius: 10px; width: 100%;"
+       [placeholder]='post.content' *ngIf="post.post_id===Toedit()" ngModel name="content" [ngModel]='post.content'
+       #newContent> </textarea>
+    </div>
+         
+      <div class="card-footer">
+        
+          
+  
+          <button type="button" class="btn btn-success"
+          (click)="Modify(post.post_id,i)"
+          style="background-color:rgb(112, 155, 112) ;"
+          >Modify</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 10px; background-color:rgb(125, 55, 55) ;" (click)="ToDelete(post.post_id)">Delete</button>
+          <button type="button" class="btn btn-warning"
+           style="margin-left: 10px; background-color: rgb(170, 170, 128);"
+           *ngIf="post.post_id===Toedit()"
+           (click)="httpModify(post.post_id)"
+           [disabled]="''">Save</button>
+
+      </div>
+
+      
+        </div>
+
+
+</div>
+
+
+
+
+
+
+     
+
+
+
+
+    
+  

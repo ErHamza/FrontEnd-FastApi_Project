@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <form #postForm="ngForm" (ngSubmit)="adduser(postForm.value)">
+          <div class="form-group">
+            
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              required
+              ngModel
+              name="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              class="form-control"
+              id="content"
+              required
+              ngModel
+              name="email"
+            >
+          
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+            type="password"
+              class="form-control"
+              id="pass"
+              required
+              ngModel
+              name="password"
+              minlength="6"
+            >
+          
+          
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!postForm.valid"
+          >
+            signup
+          </button>
+        </div>
+        </form>
+
+        <div *ngIf="success"><p>your account has been created</p></div>
+
+    
+  
+        
+      </div>
+    </div>
