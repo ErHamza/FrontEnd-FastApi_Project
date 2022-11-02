@@ -4,11 +4,14 @@ import { Injectable } from "@angular/core";
 import { exhaustMap, take } from "rxjs/operators";
 import { AuthService } from "./Auth.service";
 import { Notes } from "./Notes.model";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn:'root'
 })
 export class ManipulationService{
+
+  MyMemos?=new Subject<Notes[]|undefined>;
   
 
 

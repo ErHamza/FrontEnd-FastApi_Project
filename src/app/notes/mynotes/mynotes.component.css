@@ -12,4 +12,14 @@ body{
     justify-content: center;
     
     
+    
+  }
+
+.center-screen {
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
   }

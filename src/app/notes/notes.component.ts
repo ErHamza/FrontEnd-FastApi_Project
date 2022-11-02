@@ -42,7 +42,7 @@ export class NotesComponent implements OnInit, OnDestroy {
     
     if (this.isAuth){
       this.manipulate.ShowNotes().subscribe(post=>{
-        this.posts=post
+        this.manipulate.MyMemos?.next(post);
       })
 
       
@@ -54,6 +54,14 @@ export class NotesComponent implements OnInit, OnDestroy {
    
 
   }
+
+
+  getPosts(){
+    this.manipulate.MyMemos?.subscribe(data=>{
+      this.posts= data
+
+    })
+  }
  
   
   
@@ -63,6 +71,8 @@ export class NotesComponent implements OnInit, OnDestroy {
     
     this.isLogged();
     this.fetchPosts();
+    this.getPosts();
+    
     
     
   }

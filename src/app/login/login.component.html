@@ -5,10 +5,13 @@
             <form (submit)="login(data.value)" #data="ngForm">
                 <div class="form-group">
                         <label>Username</label>
-                        <input type="text" name="email" id="username" ngModel class="form-control" >
+                        <input type="email" name="email" id="username" ngModel class="form-control"
+                        required >
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" ngModel>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <input type="password" class="form-control"
+                        required name="password" ngModel>
+                        <button type="submit" class="btn btn-primary"
+                        [disabled]="!data.valid">Login</button>
             
                 </div>
             
