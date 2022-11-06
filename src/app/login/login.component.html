@@ -1,25 +1,77 @@
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-8">
-            <form (submit)="login(data.value)" #data="ngForm">
-                <div class="form-group">
-                        <label>Username</label>
-                        <input type="email" name="email" id="username" ngModel class="form-control"
-                        required >
-                        <label>Password</label>
-                        <input type="password" class="form-control"
-                        required name="password" ngModel>
-                        <button type="submit" class="btn btn-primary"
-                        [disabled]="!data.valid">Login</button>
-            
-                </div>
-            
-            
-            </form>
 
+
+
+    <div class="outer">
+        
+        <div class="inner">
+            
+            
+        
+            <div  *ngIf="fetching==true">
+                       
+           
+                           
+                <div class="lds-roller" style="color: black; align-items: center; " ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+               
+               
+            
+               
+               </div>
+            
+            
+            <div  *ngIf="fetching==false" >
+                <h2 style=" color: blueviolet !important; text-align: center;">Login</h2>
+                <form (submit)="login(data.value)" #data="ngForm">
+                    
+                    
+                    <div class="form-group">
+                        
+                            <label>Username</label>
+                            <input type="email" name="email" id="username" ngModel class="form-control"
+                            required 
+                            placeholder="ex: email@email.com">
+                            
+                            
+                    
+                        <label style="margin-top: 10px;">Password</label>
+                            <input type="password" class="form-control"
+                            required name="password" ngModel
+                            placeholder="******">
+            
+                            
+                    
+            
+                            
+                            <button type="submit" class="btn btn-primary" style="margin-top: 10px;"
+                            [disabled]="!data.valid">Login</button>
+                            <span *ngIf="error" class="alert alert-danger form-control">{{error}}</span>
+
+
+                        </div>
+                          
+                    
+                
+                
+                </form>
+<hr>
+
+                <div style="display: flex ; height:20px ; line-height: 25px; margin-top:8px ;">
+                    <p style="font-size: large;font-style: italic; ">you don't have an account ?</p>
+                     <div  class="Register"  ><a href="#" routerLink="/signup">Register</a></div>
+                            </div>
+            
+            </div>
+        
+        
+        
+        
         </div>
-    </div>
-</div>
+        
+         
+           
+        </div>
+        
+        
 
-
+    

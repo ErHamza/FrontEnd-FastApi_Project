@@ -1,5 +1,5 @@
 
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../Auth.service';
@@ -11,14 +11,20 @@ import { Notes } from '../Notes.model';
   selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css'],
-  encapsulation: ViewEncapsulation.None
+  
 })
-export class NotesComponent implements OnInit, OnDestroy {
+export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
   posts?:Notes[];
   NoteSub?: Subscription;
   isAuth?:boolean=false;
 
-  constructor(private manipulate : ManipulationService,private auth:AuthService , private route : Router) { }
+  constructor(private manipulate : ManipulationService,private auth:AuthService 
+    , private route : Router,private renderer : Renderer2, private el : ElementRef) { }
+  
+  
+    ngAfterContentInit(): void {
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'lightblue');
+  }
 
   
 
@@ -78,6 +84,7 @@ export class NotesComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.NoteSub?.unsubscribe();
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'white');
   }
 
 }

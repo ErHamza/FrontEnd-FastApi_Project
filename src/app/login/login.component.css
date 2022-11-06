@@ -1,0 +1,232 @@
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+
+
+
+
+  .outer{
+    
+    
+    display: flex;
+    position: relative;
+    top:100px;
+     
+     justify-content: center;
+     
+    
+    z-index: 10;
+    
+    
+    
+
+    
+  }
+ 
+  div.inner{
+
+    width: 500px;
+    height: 430px;
+    display: flex;
+    
+    
+    justify-content: center;
+    /* align-items: center; */
+  
+    border:solid rgb(141, 188, 209) 1px  ;
+    border-radius: 10px;
+    z-index: 100;
+    background-color: rgb(141, 168, 171);
+  }
+  /* .inner * :not(h2){
+    position: relative;
+      left: 8px;
+  } */
+
+.inner input{
+  width: 50vh;
+  background-color: rgb(235, 239, 239);
+}
+.inner button{
+  width: 50vh;
+  border-radius:20px ;
+  margin-top: 5px;
+  
+}
+
+  .alert {
+    margin-top: 10px;
+    margin-bottom: 1px;
+    height: 38px;
+    line-height:30px;
+    padding:0 15px;
+    width: 50vh;
+  }
+
+  
+  /* :host {
+    display: block;
+    
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content:center;
+    align-items: center; 
+   } */
+
+   .Register{
+    margin-left: 17px;
+    display: flex;
+    width: 10vh;
+    height: 25px;
+    background-color: rgb(183, 193, 213);
+    border: solid 1px black;
+    border-radius: 8px;
+    
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+
+   }
+   /* .Register :hover{
+    background-color: rgb(167, 160, 152);
+
+   } */
+   a{
+    text-decoration: none;
+    color: red;
+   }
+   /* :host{
+    background:yellowgreen ;
+    display: block;
+    
+   } */
+   label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   }
+
+   .login-page {
+    height: 100%;
+    background-repeat: no-repeat ;
+    padding: 0;
+    background-color: green;
+    margin: 0;
+    
+      /* background-repeat: no-repeat;
+      background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
+}
+
+
+::-webkit-input-placeholder {
+  font-style: italic;
+  font-weight: 100;
+}
+
+  :-moz-placeholder {
+    font-style: italic;  
+    font-weight: 100;
+ }
+ ::-moz-placeholder {
+    font-style: italic;  
+    font-weight: 100;
+ }
+ :-ms-input-placeholder {  
+    font-style: italic; 
+    font-weight: 100;
+ }
+
+ input.ng-touched.ng-invalid{
+  border: 1px solid red;
+  font-weight: 100;
+ }
+
+ .inner .lds-roller{
+  position: relative;
+  top: 170px;
+  
+ }

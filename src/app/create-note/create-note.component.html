@@ -1,13 +1,39 @@
-<form class="form-group" (submit)="addNote(values.value)" #values="ngForm">
 
-    <label>Note Name</label>
-    <input name="name" type="text" class="form-control" ngModel
-    required>
-    <label>Content</label>
-    <textarea
-    required name="content" class="form-control" cols="4" ngModel ></textarea>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="!values.valid">Add Note</button>
+<div class="container">
+<div class="row">
+  <div class="col-md-6" style="position:relative ; top:100px ">
+    <div class="c">
+      
+      <form class="form-group" (submit)="addNote(values.value)" #values="ngForm">
+        <h2 style="text-align: center;" >New Note</h2>
+        <label>Note Name</label>
+        <input name="name" type="text" class="form-control" ngModel
+        autocomplete="off"
+        required>
+        <label>Content</label>
+        <textarea
+        required name="content" class="form-control" cols="4" ngModel ></textarea>
+      
+          <button type="submit" class="btn btn-primary" [disabled]="!values.valid">Add Note</button>
+          <br>
+          <span *ngIf="succed" class="alert alert-success form-control" >Your post has been created</span>
+        
     
+    </form>
 
-</form>
+    </div>
+
+   
+
+
+  </div>
+
+  
+    <div class="col-md-6" style="position:relative ; top:50px">
+      <img src="../assets/1.png" width="100%" height="500px">
+    
+  </div>
+</div>
+
+</div>
+

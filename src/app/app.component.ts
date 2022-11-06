@@ -1,5 +1,7 @@
-import { Component,
-   OnInit } from '@angular/core';
+import { AfterContentInit, Component,
+   ElementRef,
+   OnInit, 
+   Renderer2} from '@angular/core';
 import { AuthService } from './Auth.service';
 
 @Component({
@@ -7,11 +9,16 @@ import { AuthService } from './Auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit ,AfterContentInit {
   title = 'app';
-constructor(private auth : AuthService){}
+  
+constructor(private auth : AuthService , private renderer : Renderer2 , private el: ElementRef){}
   ngOnInit() {
     this.auth.autoLogin();
+  }
+  ngAfterContentInit(): void {
+    
+    
   }
 
 

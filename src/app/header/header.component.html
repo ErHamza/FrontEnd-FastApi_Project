@@ -1,22 +1,26 @@
 
 
-
-
-
 <div class="bar">
     
     <ul>
         <div
         class="logo">
         
+        <li ><a routerLink="home"><img src="../assets/mainpen-re.png" width="100px" height="50px"
+         style="border-radius:10px ; position: relative;
+            right: 90px;top: -12px "></a></li>
+            <li id="title" > <a  id="title_a" routerLink="home">Notes Book</a></li>
+
+        
         <li><a routerLink="home"><fa-icon [icon]="icon1" style="font-size: 15px;"></fa-icon>Home
             
         </a> </li>
-        <li><a href=# routerLink="notes/mynotes"><fa-icon [icon]="note"></fa-icon> 
+        <li *ngIf="isAuthenticated"><a href=# routerLink="notes/mynotes"><fa-icon [icon]="note"></fa-icon> 
             My Notes
         </a></li>
-        <li>
-            <a href="#" routerLink="addnote"><fa-icon [icon]="addnote"></fa-icon>Add Note</a>
+        <li *ngIf="isAuthenticated">
+            <a href="#" routerLink="addnote"><fa-icon [icon]="addnote"></fa-icon>
+                Add Note</a>
             </li>
         <li >
             <a href="#" routerLink="about"><fa-icon [icon]="about"></fa-icon>About</a>
@@ -53,16 +57,3 @@
     </div>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-

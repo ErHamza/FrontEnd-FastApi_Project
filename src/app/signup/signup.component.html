@@ -1,33 +1,43 @@
-<div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+<div class="outer">
+
+<div class="inner">
+
+
+  
+    
+      
         <form #postForm="ngForm" (ngSubmit)="adduser(postForm.value)">
           <div class="form-group">
+            <h2 style=" color: blueviolet !important; text-align: center;">Sing Up</h2>
             
-            <label for="name">Name</label>
-            <input
+            <label for="name">Name:</label>
+            <input 
               type="text"
               class="form-control"
               id="title"
               required
               ngModel
               name="name"
+              [placeholder]="'ex: Hamza'"
             />
-          </div>
-          <div class="form-group">
-            <label for="email">email</label>
-            <input
+          
+          
+            <label for="email" style="margin-top: 4px;">Email:</label>
+            <input 
+            type="email"
               class="form-control"
               id="content"
               required
               ngModel
               name="email"
+              [placeholder]="'ex: email@email.com'"
             >
           
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
+          
+          
+            <label style="margin-top:4px" for="password">Password:</label>
+            <input 
             type="password"
               class="form-control"
               id="pass"
@@ -35,23 +45,45 @@
               ngModel
               name="password"
               minlength="6"
+              placeholder="*******"
+              
             >
           
           
-          <button
-            class="btn btn-primary"
+          <button style="margin-top: 8px"
+            class="btn btn-primary form-control"
             type="submit"
             [disabled]="!postForm.valid"
           >
             signup
           </button>
-        </div>
+          
+        
+        <span *ngIf="success" class="alert alert-success form-control message"
+        >Your account has been created.</span>
+        <span *ngIf="myerror" class="alert alert-danger form-control message"
+        > {{myerror}}</span>
+        
+       
+      
+
+       
+<hr style="width:50vh">
+<div style="display: flex ; height:20px ; line-height: 25px; margin-top:8px ; width: 400px;">
+  <p style="font-size: large;font-style: italic; ">you already have an account ?</p>
+   <div  class="Register"  ><a href="#" routerLink="/login">Login</a></div>
+          </div>
+
+          </div>
+
+          
         </form>
-
-        <div *ngIf="success"><p>your account has been created</p></div>
-
     
   
-        
-      </div>
-    </div>
+                  
+      
+    
+
+</div>
+
+</div>

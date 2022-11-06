@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../Auth.service';
@@ -11,9 +11,9 @@ import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  encapsulation: ViewEncapsulation.None
+  
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy,AfterContentInit {
   isAuthenticated:boolean=false;
   
 username?:string;
@@ -29,7 +29,16 @@ about=faAddressCard;
  
   
 
-  constructor(private route:Router, private auth:AuthService) { }
+  constructor(private route:Router, private auth:AuthService, private renderer: Renderer2, private el: ElementRef) { }
+  
+  
+  ngAfterContentInit(): void {
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'padding',0 );
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'margin',0 );
+  }
+
+
+
 
   ngOnInit() {
     this.userSub = this.auth.UserData.subscribe(user=>{
@@ -51,7 +60,7 @@ about=faAddressCard;
   
 ngOnDestroy(): void {
   this.userSub?.unsubscribe();
-    
+  this.renderer.removeStyle(this.el.nativeElement.ownerDocument.body,'margin');    
 }
 
 
