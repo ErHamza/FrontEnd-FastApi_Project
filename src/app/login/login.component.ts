@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../Auth.service';
 
 import { take, tap } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -15,6 +16,8 @@ import { take, tap } from 'rxjs/operators';
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
+  @ViewChild('data') form? : NgForm;
+  
   error?:any;
   token?:string;
   fetching:boolean=false;
@@ -61,8 +64,12 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     
   }
+  check(data:any){
+console.log(data)
+  }
 
   ngOnInit() {
+    console.log(this.form?.statusChanges)
     
     
     

@@ -26,24 +26,33 @@
                     
                     
                     <div class="form-group">
-                        
+                       
                             <label>Username</label>
                             <input type="email" name="email" id="username" ngModel class="form-control"
                             required 
                             placeholder="ex: email@email.com">
                             
                             
-                    
-                        <label style="margin-top: 10px;">Password</label>
+                            
+                                <label style="margin-top: 10px;">Password</label>
+                                
+
+                            
+                        
                             <input type="password" class="form-control"
                             required name="password" ngModel
                             placeholder="******">
-            
                             
+                            <!-- <p>show password <span ><input type="checkbox" class=""></span></p>  -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value=""
+                                 id="form2Example31" ngModel name="show" (change)="check($event.target)" />
+                                <label class="form-check-label" for="form2Example31"> Show password </label>
+                              </div>
                     
             
                             
-                            <button type="submit" class="btn btn-primary" style="margin-top: 10px;"
+                            <button type="submit" class="btn btn-primary" style="margin-top: 5px;"
                             [disabled]="!data.valid">Login</button>
                             <span *ngIf="error" class="alert alert-danger form-control">{{error}}</span>
 

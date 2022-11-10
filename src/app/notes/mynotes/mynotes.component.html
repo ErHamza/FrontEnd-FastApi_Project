@@ -37,10 +37,10 @@ class="list-group" *ngFor="let post of postsList">
 <div class="row">
 
   <div *ngFor="let post of postsList;let i=index" class="col-9 card mb-3" 
-  style="max-width: 30rem;min-height: 100px; background-color:#FFF7E9; margin-right: 60px;" >
+  style="max-width:520px ;height: 200px; background-color:#FFF7E9; margin-right: 40px;" >
 
     
-    <div class="card-header" style="color: black;">
+    <div class="card-header" style="color: black; text-align: center;">
       <p *ngIf="post.post_id!=Toedit() || !editMode">{{post.post_name}}</p>
       
       
@@ -57,7 +57,8 @@ class="list-group" *ngFor="let post of postsList">
       #newName>
     
     </div>
-    <div class="card-body" style="height:100px ; overflow-y: scroll ;" >
+
+    <div class="card-body" style="height:100px ; overflow-y: scroll ; text-justify: auto;" >
       
       <p class="card-text" *ngIf="post.post_id!=Toedit() || !editMode">
         {{post.content}}</p>

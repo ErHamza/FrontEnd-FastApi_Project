@@ -52,15 +52,15 @@ export class SignupComponent implements OnInit , AfterContentInit,OnDestroy{
         email:"",
         password:""
       })
-      this.renderer.removeClass(this.el.nativeElement.ownerDocument.input,'ng-invalid');
-      this.renderer.addClass(this.el.nativeElement.ownerDocument.input,'ng-valid');
-      this.renderer.removeClass(this.el.nativeElement.ownerDocument.input,'ng-touched');
-      this.renderer.addClass(this.el.nativeElement.ownerDocument.input,'ng-untouched');
-
+      // this.renderer.removeClass(this.el.nativeElement.ownerDocument.input,'ng-invalid');
+      // this.renderer.addClass(this.el.nativeElement.ownerDocument.input,'ng-valid');
+      // this.renderer.removeClass(this.el.nativeElement.ownerDocument.input,'ng-touched');
+      // this.renderer.addClass(this.el.nativeElement.ownerDocument.input,'ng-untouched');
+      this.data?.form.markAsUntouched()
       setTimeout(() => {
         this.success=false;
        
-      }, 5000);
+      }, 3000);
       
       
   

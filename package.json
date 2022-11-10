@@ -27,6 +27,8 @@
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^5.2.2",
     "font-awesome": "^4.7.0",
+    "ng-animate": "^2.0.1",
+    "ngx-teximate": "^0.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

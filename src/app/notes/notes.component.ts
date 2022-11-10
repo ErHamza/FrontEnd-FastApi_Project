@@ -23,7 +23,7 @@ export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
   
   
     ngAfterContentInit(): void {
-    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'lightblue');
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', '#d8dee9');
   }
 
   

@@ -14,7 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { WelcomePipe } from './welcome.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TeximateModule } from 'ngx-teximate';
 
 
 @NgModule({
@@ -28,16 +30,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NotFoundComponent,
     LoginComponent,
     SignupComponent,
-    CreateNoteComponent
+    CreateNoteComponent,
+    WelcomePipe,
+    
+    
     
   ],
   imports: [
     BrowserModule,
+    TeximateModule,
+    BrowserAnimationsModule,
     
     FormsModule,
     RoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    
     
     
   ],

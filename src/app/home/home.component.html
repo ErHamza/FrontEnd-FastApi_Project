@@ -1,1 +1,12 @@
-<p>home</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-5 col-xs-5 welcome">
+			<h1 style="color:rgb(65, 65, 241);"><teximate [text]="welcome" [enter]="enterAnimation" (finish)="done($event)"
+				></teximate></h1>
+				<h1 class="or" *ngIf="finished==true"> <teximate [text]="or" [enter]="enterAnimation"></teximate></h1>
+			
+
+		</div>
+		</div>
+		
+</div>

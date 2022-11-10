@@ -10,6 +10,18 @@ li{
     
     /* margin-top: 10px; */
 
+
+
+}
+.spacing{
+    float: right;
+    margin-right: 100px;
+}
+
+
+.mod{
+    float: right;
+
 }
 #title_a{
     font-style: italic;
@@ -49,12 +61,7 @@ a{
 a:hover{
     color: aqua;
 }
-.bar ul {
-    
-    
-    /* align-items: center; */
-    margin-left: 30px;
-}
+
 .bar ul li {
     position: relative;
     top: 15px;

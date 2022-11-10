@@ -128,10 +128,15 @@
       left: 8px;
   } */
 
-.inner input{
+/* .inner input :not(div){
   width: 50vh;
   background-color: rgb(235, 239, 239);
-}
+} */
+
+/* .innerInput{
+  width: 50vh;
+  background-color: rgb(235, 239, 239);
+} */
 .inner button{
   width: 50vh;
   border-radius:20px ;
