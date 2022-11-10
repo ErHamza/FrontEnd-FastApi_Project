@@ -37,7 +37,9 @@ class="list-group" *ngFor="let post of postsList">
 <div class="row">
 
   <div *ngFor="let post of postsList;let i=index" class="col-9 card mb-3" 
-  style="max-width:520px ;height: 200px; background-color:#FFF7E9; margin-right: 40px;" >
+  style="max-width:520px ;height: 200px; background-color:#FFF7E9; margin-right: 40px;" 
+  
+  [@trueFalse]="animate ? 'true': 'false'">
 
     
     <div class="card-header" style="color: black; text-align: center;">

@@ -4,11 +4,21 @@ import { Subscription } from 'rxjs';
 import { ManipulationService } from 'src/app/Manipulation.service';
 import { Notes } from 'src/app/Notes.model';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { deleteAnimation } from 'src/app/shared/animation';
+import { transition, trigger, useAnimation } from '@angular/animations';
+
 
 @Component({
   selector: 'app-mynotes',
   templateUrl: './mynotes.component.html',
-  styleUrls: ['./mynotes.component.css']
+  styleUrls: ['./mynotes.component.css'],
+  animations:[
+    trigger('trueFalse',[
+      transition('true=>void' , useAnimation(deleteAnimation , {
+        params:{time:'3s'}
+      }))
+    ])
+  ]
 })
 export class MynotesComponent implements OnInit, OnDestroy {
   exlamation= faExclamation;
@@ -18,6 +28,8 @@ export class MynotesComponent implements OnInit, OnDestroy {
   @Input() postsList? : Notes[];
   @ViewChild('newName') name?:ElementRef;
   @ViewChild('newContent') content?:ElementRef;
+  //this animate to start an animation
+animate=false;
 
 toModifyId?:number;
 listener1?: Subscription;
@@ -38,10 +50,7 @@ default=true;
 
   ToDelete(index :number)
   {
-
-
-   
-    
+    this.animate=true;
 
     console.log(this.postsList)
    this.listener1= this.manipulate.DeletPost(index).subscribe(()=>{
@@ -85,7 +94,7 @@ httpModify(post_id_ :number){
   const content = this.content?.nativeElement.value
   this.editMode=false
   this.manipulate.UpdatePost({name,content},post_id_).subscribe(data=>{
-    console.log("sent : ",data);
+    
     const new_note = this.postsList?.map(post=>{
       post.post_id ===post_id_? post.post_name=name:'' ;
       post.post_id ===post_id_? post.content=content:'' ;

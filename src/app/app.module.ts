@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeximateModule } from 'ngx-teximate';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { TeximateModule } from 'ngx-teximate';
     RoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    
     
     
     

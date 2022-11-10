@@ -133,10 +133,7 @@
   background-color: rgb(235, 239, 239);
 } */
 
-/* .innerInput{
-  width: 50vh;
-  background-color: rgb(235, 239, 239);
-} */
+/*  */
 .inner button{
   width: 50vh;
   border-radius:20px ;
@@ -172,7 +169,6 @@
     background-color: rgb(183, 193, 213);
     border: solid 1px black;
     border-radius: 8px;
-    
     align-items: center;
     justify-content: center;
     font-size: 15px;

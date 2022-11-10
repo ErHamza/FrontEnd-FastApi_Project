@@ -1,8 +1,10 @@
 .welcome{
     position: relative;
     top:200px;
-    left:10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    left:20px;
+    font-size: 12px;
+    font-family:'Alegreya Sans SC'  ;
+   
 }
 
 /* .border{
@@ -55,7 +57,7 @@
     
     position: relative;
     top:20px;
-    left: 30px;
+    left: 40px;
     color: rgb(73, 42, 3);
     font-family: cursive;
     text-indent: 0.5px;
