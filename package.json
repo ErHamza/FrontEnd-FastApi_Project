@@ -46,9 +46,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.7.2",
-    "@angular/cli": "x.x.x",
-    "@angular/compiler-cli": "x.x.x",
-    "typescript": "x.x.x",
     "heroku-postbuild" : "ng build — prod"
   },
   
