@@ -3,8 +3,9 @@ import { animation, style, animate, trigger, transition, useAnimation } from '@a
 export const deleteAnimation = animation([
   style({
     opacity:0,
-    width:0,
-    height:0
+    // width:0,
+    // height:0,
+    
 
   }),
   animate('{{ time }}')

@@ -24,6 +24,7 @@ export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
   
     ngAfterContentInit(): void {
     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', '#d8dee9');
+    
   }
 
   
@@ -84,7 +85,8 @@ export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
   }
   ngOnDestroy(): void {
     this.NoteSub?.unsubscribe();
-    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'white');
+    this.renderer.removeStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor');
+    
   }
 
 }

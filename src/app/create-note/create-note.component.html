@@ -1,8 +1,9 @@
 
-<div class="container">
-<div class="row">
-  <div class="col-md-6" style="position:relative ; top:100px ">
-    <div class="c">
+<!-- <div class="container"> -->
+<div class="grid">
+
+  <!-- <div class="col-md-6 col-xs-6" style="position:relative ; top:100px "> -->
+    <div class="page">
       
       <form class="form-group" (submit)="addNote(values.value)" #values="ngForm">
         <h2 style="text-align: center;" >New Note</h2>
@@ -16,8 +17,9 @@
       
           <button type="submit" class="btn btn-primary" [disabled]="!values.valid">Add Note</button>
           <br>
-          <span *ngIf="succed" class="alert alert-success form-control" >Your post has been created</span>
-        
+          <span *ngIf="succed" class="alert alert-success form-control" >
+            Your Note Has Been Created
+          </span>
     
     </form>
 
@@ -26,14 +28,17 @@
    
 
 
-  </div>
+  <!-- </div> -->
 
   
-    <div class="col-md-6" style="position:relative ; top:50px">
-      <img src="../assets/1.png" width="100%" height="500px">
+    <!-- <div class="col-md-6 col-xs-6" style="position:relative ; top:50px"> -->
+      <div class="image">
+        <img src="../assets/1.png" width="100%" height="500px">
+      </div>
+      
     
-  </div>
+  <!-- </div> -->
 </div>
 
-</div>
+<!-- </div> -->
 

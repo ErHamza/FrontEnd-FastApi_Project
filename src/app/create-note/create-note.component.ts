@@ -15,7 +15,7 @@ export class CreateNoteComponent implements OnInit, AfterContentInit , OnDestroy
 
 
   ngAfterContentInit(): void {
-    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'lightblue');
+    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'background', 'linear-gradient(to bottom, #D8DEE9 40%, #A0AAB4 60%');
     
 
   }
@@ -41,7 +41,7 @@ export class CreateNoteComponent implements OnInit, AfterContentInit , OnDestroy
     setTimeout(() => {
       this.succed=false;
       
-    }, 2000);
+    }, 3000);
 
   }
 
@@ -51,7 +51,7 @@ export class CreateNoteComponent implements OnInit, AfterContentInit , OnDestroy
   }
   ngOnDestroy(): void {
     this.succed=false;
-    this.renderer.removeStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor');
+    this.renderer.removeStyle(this.el.nativeElement.ownerDocument.body,'background');
     
     
   }

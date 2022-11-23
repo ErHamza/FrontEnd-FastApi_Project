@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 import { ManipulationService } from 'src/app/Manipulation.service';
 import { Notes } from 'src/app/Notes.model';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { deleteAnimation } from 'src/app/shared/animation';
-import { transition, trigger, useAnimation } from '@angular/animations';
+
+import { state, transition, trigger, useAnimation, style, animate } from '@angular/animations';
 
 
 @Component({
@@ -13,13 +13,27 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   templateUrl: './mynotes.component.html',
   styleUrls: ['./mynotes.component.css'],
   animations:[
-    trigger('trueFalse',[
-      transition('true=>void' , useAnimation(deleteAnimation , {
-        params:{time:'3s'}
-      }))
-    ])
-  ]
+    trigger('firstAnimation' , [
+      transition(':leave',[
+      style({
+      position: 'relative',
+      right:0
+      
+      }) ,
+      animate(1000 , style({
+        
+        position: 'relative',
+        right: '80px',
+        opacity:0
+      
+      })
+      )
+    ])])]
+
+
+
 })
+
 export class MynotesComponent implements OnInit, OnDestroy {
   exlamation= faExclamation;
 
@@ -52,24 +66,35 @@ default=true;
   {
     this.animate=true;
 
-    console.log(this.postsList)
-   this.listener1= this.manipulate.DeletPost(index).subscribe(()=>{
-      console.log('deleted')
-      const newList =  this.postsList?.filter(post=>{
-        return post.post_id!=index
-      })
-      this.manipulate.MyMemos?.next(newList)
+    
+  //  this.listener1= this.manipulate.DeletPost(index).subscribe(()=>{
+      
+  //     const newList =  this.postsList?.filter(post=>
+  //       {
+  //       return post.post_id!=index
+  //     })
+  //     this.manipulate.MyMemos?.next(newList)
 
-    });
+  //   });
+  // this.listener1= this.manipulate.DeletPost(index).subscribe()
+
+
+
+
+  const newList =  this.postsList?.filter(post=>
+          {
+          return post.post_id!=index
+        })
+      this.postsList= newList;
+     this.manipulate.MyMemos?.next(newList)
+     this.manipulate.DeletPost(index).subscribe()
 
 
   }
 
 
 
-//   trackByIdentity(index, item){
-//     return item.<attribute_which_is_unique>; 
-//  }
+
 
 Modify(index :number, i:number){
   this.toModifyId= index;

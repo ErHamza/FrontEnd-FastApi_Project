@@ -1,8 +1,36 @@
 
 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    }
+
+
+
+nav {
+        background-color: rgb(160, 170, 180);
+        border-bottom: solid 1px rgb(110, 116, 123);
+        padding: 0 15px;
+        height: 60px;
+        width: 100%;
+        position: sticky
+}
+
+
+.bar{
+
+    display: flex;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    
+
+}
+
 li{
-    margin-right: 30px;
-    float: left;
+    /* margin-right: 30px; */
+    padding: 15px;
     list-style: none;
     font-size: large;
     
@@ -13,44 +41,46 @@ li{
 
 
 }
-.spacing{
-    float: right;
-    margin-right: 100px;
+
+img{
+    border-radius:10px ; 
+    /* position: relative;
+            
+    right: 90px;
+    top: -12px  */
 }
 
 
-.mod{
-    float: right;
 
-}
+
 #title_a{
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
     color:rgb(102, 102, 214);
     font-size: xx-large;
+    
+    
 }
+
+
 #title{
-   
-    position:relative ;
-    right: 120px; 
-    top: 5px;
-    
-}
-.logo{
-    margin-left: 80px;
-}
-.bar{
-
-    text-align: center;
     position: relative;
-    top:-16px;
-    height: 60px;
-    background-color: rgb(160, 170, 180);
-    width: 100%;
-    border-bottom: solid 1px rgb(110, 116, 123);
+    bottom:10px;
+    /* right:40% */
+    margin-right: auto;
+
     
 
+   
+    /* position:relative ;
+    right: 120px; 
+    top: 5px; */
+    
+    
+    
 }
+
+
 a{
     text-decoration: none;
     cursor: pointer;
@@ -58,19 +88,56 @@ a{
 
 
 }
+
+
 a:hover{
     color: aqua;
 }
 
-.bar ul li {
-    position: relative;
-    top: 15px;
+
+ .right {
+    justify-self: flex-end;
+}
+
+
+@media only screen and (max-width: 750px){
+    nav {
+        background-color: rgb(160, 170, 180);
+        border-bottom: solid 1px rgb(110, 116, 123);
+        padding: 0 8px;
+        height: 60px;
+        width: 100%;
+}
+
+#title_a{
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    color:rgb(102, 102, 214);
+    font-size: medium;
+    
+    
+}
+
+li{
+    /* margin-right: 30px; */
+    padding:  7px;
+    list-style: none;
+    font-size: large;
     
     
     
+    /* margin-top: 10px; */
+
+
+
 }
 
 
 
 
-     
+a,span{
+    font-size: medium;
+}
+
+    
+}

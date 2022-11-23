@@ -35,6 +35,7 @@ about=faAddressCard;
   ngAfterContentInit(): void {
     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'padding',0 );
     this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'margin',0 );
+    // this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'position','sticky' );
   }
 
 

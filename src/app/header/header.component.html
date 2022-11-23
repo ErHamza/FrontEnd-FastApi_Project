@@ -1,24 +1,25 @@
 
 
-<div class="bar">
+<!-- <div class="bar"> -->
+    <nav>
     
-    <ul>
-        <div
-        class="logo">
+    <ul class="bar">
         
+<!--         
         <li ><a routerLink="home"><img src="../assets/mainpen-re.png" width="100px" height="50px"
-         style="border-radius:10px ; position: relative;
-            right: 90px;top: -12px "></a></li>
-            <li id="title" > <a  id="title_a" routerLink="home">Note Book</a></li>
+         ></a></li> -->
+            <li id="title" >
+                 <a  id="title_a" routerLink="home">
+                <img src="../assets/mainpen-re.png" width="100px" height="50px" style="position: relative;
+                bottom: 5px;"
+                >Note Book
+            </a>
+            </li>
 
         
        
     
-    </div>
-<div class="mod">
-        
-    
-        
+
         <li *ngIf="isAuthenticated"><a href=# routerLink="notes/mynotes"><fa-icon [icon]="note"></fa-icon> 
             My Notes
         </a></li>
@@ -28,48 +29,39 @@
             </li>
         
 
-    
 
-
-
-
-    
    
 
-    <li *ngIf="!isAuthenticated" style="margin-left: 50px;">
-        <a href="#" routerLink="signup">Sign Up</a>
+    <li *ngIf="!isAuthenticated">
+        <a href="#" routerLink="signup">
+        Sign Up</a>
         
     </li>
     <li *ngIf="!isAuthenticated" >
-        <a href="#" routerLink="login">Login
+        <a href="#" routerLink="login">
+        Login
             
         </a>
         
     </li>
-    <li *ngIf="isAuthenticated" >
-        <span style="color:blue; margin-right: 10px;">{{username}}</span>
+    <li *ngIf="isAuthenticated" class="right"  >
+        <span style="color:blue; margin-right: 10px;">
+        <b>{{username}}</b></span>
 
         <a (click)="logo()" style="color: red;">Logout <fa-icon [icon]="poweroff"></fa-icon>
             
-            
         </a>
         
     </li>
 
 
-
-
-</div>
-
-
-        
     
 
         
     </ul>
     
     
-    
-    </div>
+</nav>
+    <!-- </div> -->
     
     
