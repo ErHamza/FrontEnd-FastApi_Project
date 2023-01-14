@@ -1,4 +1,6 @@
-import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentInit, Component,
+   ElementRef, OnDestroy, OnInit,
+    Renderer2, ViewChild, Output, EventEmitter} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ManipulationService } from '../Manipulation.service';
 
@@ -8,10 +10,14 @@ import { ManipulationService } from '../Manipulation.service';
   styleUrls: ['./create-note.component.css']
 })
 export class CreateNoteComponent implements OnInit, AfterContentInit , OnDestroy {
-  @ViewChild('values') form? : NgForm;
-// Post?:{name:string , content:string};
-  constructor(private manipulate: ManipulationService , private renderer : Renderer2 , private el : ElementRef) { }
+  
   succed?:boolean;
+  @ViewChild('values') form? : NgForm;
+
+  constructor(private manipulate: ManipulationService , private renderer : Renderer2 , private el : ElementRef) { }
+  
+  @Output() state= new EventEmitter<void>();
+  @Output() newNote= new EventEmitter<void>();
 
 
   ngAfterContentInit(): void {
@@ -21,27 +27,37 @@ export class CreateNoteComponent implements OnInit, AfterContentInit , OnDestroy
   }
 
 
+stopShowing(){
+
+  this.state.emit();}
 
 
-  addNote(data:{name:string , content:string}){
+
+addNote(data:{name:string , content:string, published: Boolean}){
+    
+    
     
     this.manipulate.CreateNote(data).subscribe(data=>{
       if (data){
+        this.newNote.emit()
+        
         this.succed=true;
         this.form?.setValue({
           name:"",
-          content: ""
+          content: "",
+          published: ""
         })
       }
-      console.log(data);
+      
     },error=>{
-      console.log(error)
+      
     })
 
     setTimeout(() => {
       this.succed=false;
+      this.stopShowing()
       
-    }, 3000);
+    }, 1000);
 
   }
 

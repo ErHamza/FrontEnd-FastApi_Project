@@ -1,10 +1,15 @@
 
-import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { AfterContentInit, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../Auth.service';
 import { ManipulationService } from '../Manipulation.service';
-import { Notes } from '../Notes.model';
+import { Notes } from '../models/Notes.model';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { DeletedNotes } from '../models/deleted.model';
 
 
 @Component({
@@ -13,17 +18,85 @@ import { Notes } from '../Notes.model';
   styleUrls: ['./notes.component.css'],
   
 })
-export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
+export class NotesComponent implements OnInit,
+  OnDestroy,
+  AfterContentInit,
+  DoCheck
+  {
   posts?:Notes[];
+  deletedNotes?: DeletedNotes[];
   NoteSub?: Subscription;
   isAuth?:boolean=false;
+  LightMode?:Boolean;
+  DetecteMode? : Subscription;
+  isFetching?=false;
+  show?:Boolean= false;
+  AddNote:Boolean=false;
+  toanimate?:Boolean;
+  showDeleted=false;
 
+ //Icons 
+  faBars= faBars;
+  faPlus=faPlus;
+  faTrash= faTrash;
+  faBookOpen=faBookOpen
+
+//this function track the click in the dark div, to cancel the add note 
+  showaddnote(){
+    this.AddNote=false;
+  
+
+  
+  
+  
+
+}
+
+//show the side bar menu
+  showMenu(data:any ){
+    this.show= data
+  }   
+
+  //function ivoked when click on show the box to add new note
+  addnote(){
+    // this.toanimate=false;
+    this.AddNote=true;
+    
+
+  }
+//this function is invoked when the user creates a new Note
+  addedNote(){
+    this.toanimate=false;
+    this.AddNote=false;
+    this.fetchPosts();
+     this.getPosts();
+     
+     
+  
+     setTimeout(()=>this.toanimate=undefined, 2000)
+
+  }
+  
   constructor(private manipulate : ManipulationService,private auth:AuthService 
     , private route : Router,private renderer : Renderer2, private el : ElementRef) { }
+ 
+ 
   
   
     ngAfterContentInit(): void {
-    this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', '#d8dee9');
+    this.mode()
+    if (this.LightMode){
+      this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'white');
+     
+      
+      
+    }
+    else {
+      this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', '#303030');
+      
+     
+    }
+    
     
   }
 
@@ -39,6 +112,8 @@ export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
       }
       else{
         this.isAuth=false;
+        this.route.navigate(['/'])
+
       }
       
     })
@@ -48,6 +123,7 @@ export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
   fetchPosts(){
     
     if (this.isAuth){
+      this.isFetching=true;
       this.manipulate.ShowNotes().subscribe(post=>{
         this.manipulate.MyMemos?.next(post);
       })
@@ -55,32 +131,72 @@ export class NotesComponent implements OnInit, OnDestroy , AfterContentInit{
       
    
     }
-    
-
-
-   
 
   }
 
+  
+
+  
 
   getPosts(){
-    this.manipulate.MyMemos?.subscribe(data=>{
+   this.NoteSub= this.manipulate.MyMemos?.subscribe(data=>{
       this.posts= data
+      // console.log(data)
+      this.isFetching=false;
 
     })
+    
   }
- 
-  
-  
+
+  mode(){
+    this.manipulate.isLight.subscribe( light=>{
+     this.LightMode= light
+   }
+   )
+ }
+
+// getDeletedPost(){
+//   this.manipulate.trash().subscribe(
+//     data=>{
+//       this.deletedNotes= data;
+//     }
+//   )
+// }
 
   ngOnInit(): void {
+
+    
     
     
     this.isLogged();
     this.fetchPosts();
     this.getPosts();
+    // this.getDeletedPost()
+    
+   
     
     
+  }
+
+  ngDoCheck(): void {
+    console.log("laaaa: ",this.posts)
+    // this.mode();
+    // console.log(this.LightMode)
+    // console.log(this.showMenu)
+    
+    // console.log(this.show)
+
+    if (this.LightMode){
+      this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'white');
+    
+      // color normal #d8dee9
+      //#303030' color dark
+    }
+    else {
+      this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', '#303030');
+      
+     
+    }
     
   }
   ngOnDestroy(): void {

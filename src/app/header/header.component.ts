@@ -1,10 +1,13 @@
-import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2,  } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../Auth.service';
 import { faHome, faNoteSticky, faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
+
+import { ManipulationService } from '../Manipulation.service';
 
 
 @Component({
@@ -14,8 +17,9 @@ import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
   
 })
 export class HeaderComponent implements OnInit, OnDestroy,AfterContentInit {
+
   isAuthenticated:boolean=false;
-  
+  light=true;
 username?:string;
 userSub?:Subscription;
 icon1=faHome;
@@ -29,7 +33,18 @@ about=faAddressCard;
  
   
 
-  constructor(private route:Router, private auth:AuthService, private renderer: Renderer2, private el: ElementRef) { }
+  constructor(private route:Router, private auth:AuthService,
+     private renderer: Renderer2,
+      private el: ElementRef,
+      private manipulation : ManipulationService) { }
+
+
+  dark( data:any){
+this.light=!this.light;
+this.manipulation.isLight.next(this.light)
+
+
+  }
   
   
   ngAfterContentInit(): void {
@@ -42,6 +57,7 @@ about=faAddressCard;
 
 
   ngOnInit() {
+    
     this.userSub = this.auth.UserData.subscribe(user=>{
       this.isAuthenticated= !!user
       if(user){

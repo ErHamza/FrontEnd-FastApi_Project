@@ -12,12 +12,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RoutingModule } from './routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import {  HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WelcomePipe } from './welcome.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeximateModule } from 'ngx-teximate';
-
+import { MeComponent } from './notes/me/me.component';
+import { FixedComponent } from './directives/fixed.directive';
+import { DeletedComponent } from './notes/deleted/deleted.component';
+import { Intercepter } from './intercepter.service';
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { TeximateModule } from 'ngx-teximate';
     SignupComponent,
     CreateNoteComponent,
     WelcomePipe,
-    
+    MeComponent,
+    FixedComponent,
+    DeletedComponent
     
     
   ],
@@ -50,9 +55,12 @@ import { TeximateModule } from 'ngx-teximate';
     
     
     
+    
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass:Intercepter, multi:true}],
   
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

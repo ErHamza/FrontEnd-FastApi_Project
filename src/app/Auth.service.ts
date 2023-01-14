@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import {HttpClient} from "@angular/common/http"
-import { User } from "./user.model";
+import { User } from "./models/user.model";
 import { BehaviorSubject, Subject } from "rxjs";
 import {tap} from "rxjs/operators"
 import { Router } from "@angular/router";
@@ -14,7 +14,8 @@ export class AuthService{
 
   UserData= new BehaviorSubject<User|null>(null);
 
- server:string="https://memos-app.herokuapp.com";
+ server:string="http://127.0.0.1:8000";
+ 
     constructor(private http:HttpClient, private route :Router){}
 login(data:{email:string , password:string})
 {

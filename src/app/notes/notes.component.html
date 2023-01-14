@@ -1,19 +1,53 @@
 
-<div class="container" style="margin-top: 20px;">
+<!-- <div class="container-fluid" style="margin-top: 20px;"> -->
+    <app-create-note *ngIf="AddNote" class="app"
+    (state)="showaddnote()" (newNote)="addedNote()"></app-create-note>
+    <div class="grid"   [ngStyle]="{ gridTemplateColumns:show===false? '4% 94%':''}">
+        
+        <div *ngIf="!show" class="symbol-menu" >
+            <div class="style-icons" fix>
+                
+                <fa-icon  (click)="showDeleted=false" [icon]="faBookOpen" > </fa-icon>
+                <fa-icon  (click)="show=true" [icon]="faBars" > </fa-icon>
+                <fa-icon    [icon]="faPlus" (click)="addnote()"> </fa-icon>
+                <fa-icon    [icon]="faTrash"  style="color:rgb(242, 79, 79)" 
+                (click)="showDeleted=true"
+                > </fa-icon>
 
-    <div class="row" >
-        <div class="col-xs-12">
-            <app-mynotes [postsList]="posts"></app-mynotes>
+            </div>
 
         </div>
-        
-            
-    </div>
-   
     
+        <div class="col-1" *ngIf="show">
+            
+                <app-me (Menu)="showMenu($event)" ></app-me>
+            </div>
+             
+        
 
     
+    <div class="col-2" >
+
+            <div  *ngIf="isFetching==true" >
+       
+                <div class="lds-roller" style="color: black; " ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+               </div>
+
+            <app-mynotes [postsList]="posts" [toAnimate]="toanimate" *ngIf="!showDeleted"></app-mynotes>
+            <app-deleted  *ngIf="showDeleted"></app-deleted>
+
+        </div>
+    
+
 </div>
+   
+    
+<!-- <app-me></app-me> -->
+<!-- <app-mynotes [postsList]="posts"></app-mynotes> -->
+
+    
+<!-- </div> -->
 
 
 

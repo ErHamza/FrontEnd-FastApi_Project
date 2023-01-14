@@ -1,0 +1,83 @@
+<!-- <ul
+class="list-group" *ngFor="let post of postsList">
+<li class="list-group-item">{{post.content}}</li>
+<hr>
+</ul> -->
+
+
+<div class="container">
+    <div class="row">
+  
+      <div class="col-xs-12">
+    
+        <div class="center-screen"
+        *ngIf="deletedList?.length==0">
+         
+         
+            <fa-icon [icon]=" faExclamation" ></fa-icon>
+          
+  
+       
+       </div>
+    
+      </div>
+    
+  
+    
+    </div>
+  
+  
+  
+  
+  <div class="row">
+  <div class="grid">
+
+    <div *ngFor="let post of deletedList;let i=index" class="card">
+  
+      <div class="card-header">
+        
+        
+        
+          <div class="title">
+            <p >{{post.post_name}}</p>
+          </div>
+      
+
+      </div>
+      <div class="card-body" style="height:200px  ; text-justify: auto;" >
+  
+        <p class="card-text" >
+          {{post.content}} </p>
+  
+       
+      </div>
+           <div class="card-footer">
+            
+            
+            <div class="flex-first"> {{post.created_at }} </div>
+            <div class="restore"> <fa-icon [icon]=" faTrashCan" (click)="restore(post.post_id)"></fa-icon></div>
+             
+          </div>
+          
+    
+
+          </div>
+
+  </div> 
+
+  
+  </div>
+  </div>
+  
+  
+  
+  
+  
+  
+       
+  
+  
+  
+  
+      
+    

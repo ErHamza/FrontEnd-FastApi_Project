@@ -1,6 +1,6 @@
 
 
-import { NgModule } from "@angular/core";
+import { Component, NgModule } from "@angular/core";
 import { RouterModule, Routes} from "@angular/router";
 import { AboutComponent } from "./about/about.component";
 import { CreateNoteComponent } from "./create-note/create-note.component";
@@ -29,6 +29,7 @@ const appRoutes :Routes=[
 
 ]
 },
+
 {path:'about', component:AboutComponent},
 {path:'**', redirectTo:'home'}
 

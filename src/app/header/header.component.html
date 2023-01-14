@@ -1,7 +1,7 @@
 
 
 <!-- <div class="bar"> -->
-    <nav>
+    <nav fix>
     
     <ul class="bar">
         
@@ -16,21 +16,35 @@
             </a>
             </li>
 
+            <li>
+                
+                    <div class="switch">
+                        <input id="switch-1" type="checkbox" class="switch-input"  (change)="dark($event)" >
+                        <label for="switch-1" class="switch-label">Dark Mode</label>
+                    </div>
+
+                
+
+
+            </li>
+
+            
+
         
        
     
 
-        <li *ngIf="isAuthenticated"><a href=# routerLink="notes/mynotes"><fa-icon [icon]="note"></fa-icon> 
+        <li *ngIf="isAuthenticated" style="font-weight: 600;"><a href=# routerLink="notes/mynotes"><fa-icon [icon]="note"></fa-icon> 
             My Notes
         </a></li>
-        <li *ngIf="isAuthenticated">
+        <!-- <li *ngIf="isAuthenticated">
             <a href="#" routerLink="addnote"><fa-icon [icon]="addnote"></fa-icon>
                 Add Note</a>
-            </li>
+            </li> -->
         
 
 
-   
+    
 
     <li *ngIf="!isAuthenticated">
         <a href="#" routerLink="signup">

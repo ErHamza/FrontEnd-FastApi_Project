@@ -1,0 +1,73 @@
+<div class="col-1">
+    
+        <div class="close">
+
+            <p>
+                <fa-icon (click)="showM()" id="X" [icon]="faX" ></fa-icon>
+    
+            </p>
+    
+        
+        </div>
+        <div class="add-flex">
+            <div class="add">
+                <p>Add new Categorie</p>
+                
+            </div>
+            <div class="add icon">
+                <fa-icon [icon]="faAdd" (click)="clickToAddCat()" ></fa-icon>
+            </div>
+    
+            <input type="text" *ngIf="addCat" class="addCat">
+            
+    
+        </div>
+        
+    
+    <div class="categ-list">
+    
+        <h3>Categories</h3>
+        <hr>
+        <ul>
+            <li >
+                <div>
+                    <p class="notes-categ">Sport</p> 
+                
+                
+                </div>
+                <div><p class="notes-number">22</p>
+                </div>
+                
+    
+    
+                </li>
+    
+    
+                <li >
+                    <div>
+                        <p class="notes-categ">Math and hestory</p> 
+                    
+                    
+                    </div>
+                    <div><p class="notes-number">2</p>
+                    </div>
+                    
+        
+        
+                    </li>
+    
+    
+    
+            
+    
+        </ul>
+    
+    
+    </div>
+
+
+    
+   
+
+
+</div>

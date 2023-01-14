@@ -1,7 +1,7 @@
-body{
-    background-color: rgb(150, 150, 217);
-}
 
+*{
+  z-index: 1;
+}
 .nshow{
     display: none;
 }
@@ -14,12 +14,94 @@ body{
     
     
   }
+  textarea{
+    width: 100%;
+    background-color:whitesmoke;
+    border-color: blueviolet;
+      /* border-radius: 10px; */
+  }
+
+input{
+  background-color:whitesmoke ;
+  /* border-radius: 10px; */
+  width: 100%; border-color: blueviolet;
+}
 
 .center-screen {
-    background-color: lightblue;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     min-height: 100vh;
+    font-size: 200px;
+    color: blue
   }
+.container{
+  margin-top: 18px;
+}
+div :not(.card-footer , .card-header){
+  overflow: scroll;
+}
+.row{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.card{
+  max-width:500px ;
+  height: 300px;
+  /* background-color:#FFF7E9; */
+  background-color: #C4D3E6;
+  
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.card-footer{
+  height: auto;
+  width: 100%;
+  
+  display: grid;
+  
+  grid-template-columns: 20% 80%;
+  align-content: center;
+  align-items: baseline;
+  font-size: 0.9em;
+}
+.faHeart{
+  color:white;
+  font-size: 1.2em;
+}
+
+
+
+.card-header{
+  
+   text-align: center; 
+  text-justify: auto;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  
+}
+
+fa-icon{
+  margin: 2px;
+  cursor: pointer;
+  margin-right: 2px;
+  
+
+}
+.icons{
+position: relative;
+display: inline-block;
+top: -10px;
+right:-15px;
+font-size: 23px; 
+
+  /* justify-items: flex-end; */
+}
+
+#check{
+  color:green
+}

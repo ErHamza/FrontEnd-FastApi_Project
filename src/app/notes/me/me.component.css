@@ -1,0 +1,151 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.col-1{
+    
+    
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( to right ,#EDF7F4  10% ,#fff 90%);
+    flex-wrap: nowrap;
+    
+}
+
+
+
+input{
+    margin-top: 10px;
+    width: 80%;
+}
+
+
+
+.categ-list{
+    margin-top: 40px;
+    
+}
+
+button{
+    cursor: pointer;
+}
+
+
+
+ul{
+    margin-top: 10px;
+}
+li{
+    color: tomato;
+    font-size: medium;
+    text-decoration: none;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 80% 15%;
+    grid-template-rows: auto;
+    cursor: pointer;
+
+    
+    column-gap: 5%;
+    /* flex-direction: row; */
+    /* align-content: center; */
+    /* margin-left: 30px; */
+    
+    width: 100%;
+    height: 45px;
+    padding: 4px;
+    
+
+}
+
+
+li:hover {
+    border: greenyellow solid 1px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    
+    
+    
+
+    
+}
+
+p.notes-number{
+    /* margin: 0; */
+    
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: tomato;
+    
+
+    border: solid black 1px;
+    border-radius: 30%;
+    justify-items: end;
+    justify-content: end;
+    justify-self: end;
+    
+    
+}
+
+p.notes-categ{
+    width: 80%;
+    height: auto;
+    margin-left: 8px;
+    justify-self: flex-start;
+}
+
+.close{
+    margin-right: 3px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 0;
+    margin-right: 2px;
+    
+}
+
+
+#X{
+    margin-right: 3px;
+    color : red;
+    font-size: large;
+    cursor: pointer;
+}
+
+.close:hover{
+    filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.4));
+}
+
+.add-flex{
+    
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 80% 15%;
+    grid-template-rows: auto;
+    width: 100%;
+    align-items: center;
+    font-weight: 400;
+    
+    
+    /* justify-items: center; */
+}
+
+.add{
+    cursor: pointer;
+    font-size: 1.3em;
+    color:green;
+    font-weight: 400;
+}
+.add.icon:hover{
+    font-weight: 600;
+    filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.4));
+}
+
+.addCat{
+    border: lightblue 1px solid;
+    border-radius: 3px;
+}

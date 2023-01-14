@@ -1,13 +1,18 @@
 
-.grid{
-    margin: 10px;
-    display: grid;
-    grid-template-columns: 40% 40%;
-    grid-template-rows: 100% ;
+.box{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    /* margin: 10px; */
+    background: rgba(0,0,0,0.75);
+    /* display: grid; */
+    /* grid-template-columns: 40% 40%; */
+    /* grid-template-columns: 1fr; */
+    /* grid-template-rows: 1fr ; */
     
-    column-gap: 30px;
+    /* column-gap: 30px; */
     
-    justify-content: center;
+    z-index: 50;
 }
 
 
@@ -20,24 +25,25 @@
 
 
 .page{
-    align-self: center;
-   /* display: flex; */
- 
-   
-   /* align-content: center; */
-    /* align-items: center; */
-
-    
-    
-
-    height: 350px;
-    border:solid 1px black;
+    /* align-self: center; */
+    /* display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center; */
+    position: fixed;
+    width: 80vh;
+    top:20vh;
+    left: 30vw;
+    height: 60vh;
+    border:solid 2px black;
     border-radius: 15px;
     
-    border-top-right-radius: 100px ;
+    
     /* background-color:  rgb(206, 230, 238); */
-    background-color: #cecbc9;
-    width: 100%;
+    /* background-color: #cecbc9; */
+    background-color: #EDF7F4;
+    
+    z-index: 100;
 
 }
 h2{
@@ -48,9 +54,9 @@ h2{
     text-shadow: 0.4px 1px red;
 
 }
-.page * :not(h2){
+.page * :not(h2, .form-check-input){
     position: relative;
-    top:20px;
+    /* top:20px; */
     margin-left:20px
 }
 .page button{
@@ -60,7 +66,7 @@ h2{
     height: auto;
 }
 
-.page input{
+.page input:not(.visibility) {
     width: 80%;
     background-color:  rgb(220, 238, 244);
 
@@ -72,7 +78,7 @@ h2{
 .page span{
     margin-top: 8px;
 }
-label{
+label:not(.visibility){
     margin: 6px;
     font-style:oblique ;
     font-family: Arial, Helvetica, sans-serif;

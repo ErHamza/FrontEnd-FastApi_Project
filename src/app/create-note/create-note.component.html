@@ -1,21 +1,31 @@
 
-<!-- <div class="container"> -->
-<div class="grid">
 
-  <!-- <div class="col-md-6 col-xs-6" style="position:relative ; top:100px "> -->
+<div class="box" (click)="stopShowing()"> </div>
+  
+
+  
     <div class="page">
       
       <form class="form-group" (submit)="addNote(values.value)" #values="ngForm">
         <h2 style="text-align: center;" >New Note</h2>
         <label>Note Name</label>
-        <input name="name" type="text" class="form-control" ngModel
+        <input name="name" type="text" class="form-control" ngModel maxlength="40"
         autocomplete="off"
         required>
         <label>Content</label>
         <textarea
         required name="content" class="form-control" cols="4" ngModel ></textarea>
-      
-          <button type="submit" class="btn btn-primary" [disabled]="!values.valid">Add Note</button>
+
+
+        <input type="radio" name="published" class="visibility" ngModel value="true" id="true" required [checked]="(true)">
+        <label for="true">Public</label>
+        <input type="radio" name="published" class="visibility" id="false"  required
+        ngModel value="false" id="false">
+         <label for="false">Private</label>
+          
+    
+          <button type="submit" class="btn btn-primary" [disabled]="!values.valid">
+            Add Note</button>
           <br>
           <span *ngIf="succed" class="alert alert-success form-control" >
             Your Note Has Been Created
@@ -28,17 +38,17 @@
    
 
 
-  <!-- </div> -->
+
 
   
-    <!-- <div class="col-md-6 col-xs-6" style="position:relative ; top:50px"> -->
-      <div class="image">
+
+      <!-- <div class="image">
         <img src="../assets/1.png" width="100%" height="500px">
-      </div>
+      </div> -->
       
     
-  <!-- </div> -->
-</div>
 
-<!-- </div> -->
+
+
+
 

@@ -12,16 +12,11 @@ class="list-group" *ngFor="let post of postsList">
   
       <div class="center-screen"
       *ngIf="postsList?.length==0">
-       <!-- <p>No content to show</p> -->
        
-          <fa-icon [icon]="exlamation" style="color : royalblue ;font-size: 200px;"></fa-icon>
+       
+          <fa-icon [icon]="exlamation" ></fa-icon>
         
-          
-      
-       
-       
-       
-       
+
      
      </div>
   
@@ -31,53 +26,75 @@ class="list-group" *ngFor="let post of postsList">
   
   </div>
 
-</div>
+
 
 
 <div class="row">
 
-  <div *ngFor="let post of postsList;let i=index" class="col-9 card mb-3" 
-  style="max-width:520px ;height: 200px; background-color:#FFF7E9; margin-right: 40px;" 
-  [@firstAnimation]="animate"
+  <div *ngFor="let post of postsList;let i=index" class="card"  
+  [@firstAnimation]="animate ? 'state': '' ">
+
+    
+    <div class="card-header">
+      
   
-   >
+      
+        <div>
+          <p *ngIf="post.post_id!=Toedit() || !editMode">{{post.post_name}}</p>
+              <input type="text"
+              
+              [placeholder]='post.post_name'
+              *ngIf="post.post_id===Toedit() && editMode" ngModel name="name"
+                [ngModel]='post.post_name'
 
-    
-    <div class="card-header" style="color: black; text-align: center;">
-      <p *ngIf="post.post_id!=Toedit() || !editMode">{{post.post_name}}</p>
-      
-      
-      
-      
-      <input type="text"
-       style="background-color:whitesmoke ;
-        border-radius: 10px;
-         width: 100%; border-color: blueviolet;"
-      [placeholder]='post.post_name'
-       *ngIf="post.post_id===Toedit() && editMode" ngModel name="name"
-        [ngModel]='post.post_name'
+              #newName>
 
-      #newName>
-    
+        </div>
+
+      <div class="icons">
+        <fa-icon [icon]="faCheck" id="check" (click)="httpModify(post.post_id)"
+        *ngIf="post.post_id===Toedit() && editMode"></fa-icon>
+
+
+        <fa-icon [icon]="faPenToSquare" (click)="Modify(post.post_id, i)"
+        *ngIf="editMode==false && post.post_id===Toedit()"></fa-icon>
+
+
+        <fa-icon [icon]="faPenToSquare" (click)="Modify(post.post_id, i)"
+        *ngIf="Toedit()!=post.post_id"></fa-icon>
+
+        
+        <fa-icon [icon]="faXmark" (click)="editMode=!editMode"
+        *ngIf="post.post_id===Toedit() && editMode"></fa-icon>
+
+        
+        <fa-icon [icon]="faTrash" (click)="ToDelete(post.post_id)"   #Delete></fa-icon>
+        
+
+      </div>
+      
+
     </div>
-
-    <div class="card-body" style="height:100px ; overflow-y: scroll ; text-justify: auto;" >
+    <div class="card-body" style="height:200px  ; text-justify: auto;" >
+    
       
       <p class="card-text" *ngIf="post.post_id!=Toedit() || !editMode">
-        {{post.content}}</p>
+        {{post.content}} </p>
 
-      <textarea type="text" cols="3" style="background-color:whitesmoke;
-       border-radius: 10px; width: 100%;
-       border-color: blueviolet;"
+      <textarea type="text" cols="3"  cols="10"
        [placeholder]='post.content' *ngIf="post.post_id===Toedit() && editMode"
-        ngModel name="content" [ngModel]='post.content'
-       #newContent> </textarea>
+        ngModel name="content" [ngModel]='post.content' 
+       #newContent > </textarea>
     </div>
+         <div class="card-footer">
+           <fa-icon class="faHeart" [icon]="faHeart" (click)="liker(post.post_id)"></fa-icon>
+          <p class="time"> {{ post.created_at | date}} </p>
          
-      <div class="card-footer">
+         </div>
+      <!-- <div class="card-footer" > -->
         
           
-  
+<!--   
           <button type="button" class="btn btn-success"
           (click)="Modify(post.post_id,i)"
           style="background-color:rgb(112, 155, 112) ; max-height: 40px;"
@@ -95,14 +112,17 @@ class="list-group" *ngFor="let post of postsList">
            style="margin-left: 10px; background-color: rgb(170, 170, 128);"
            *ngIf="post.post_id===Toedit() && editMode"
            (click)="httpModify(post.post_id)"
-           >Save</button>
+           >Save</button> -->
 
-      </div>
+           <!-- <p>{{post.created_at}}</p> -->
+
+      <!-- </div> -->
 
       
         </div>
 
 
+</div>
 </div>
 
 

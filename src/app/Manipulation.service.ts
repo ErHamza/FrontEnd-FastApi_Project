@@ -1,53 +1,49 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-import { exhaustMap, take } from "rxjs/operators";
+import { exhaustAll, exhaustMap, take } from "rxjs/operators";
 import { AuthService } from "./Auth.service";
-import { Notes } from "./Notes.model";
-import { Subject } from "rxjs";
+import { Notes } from "./models/Notes.model";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { DeletedNotes } from "./models/deleted.model";
 
 @Injectable({
     providedIn:'root'
 })
 export class ManipulationService{
+MyMemos?=new Subject<Notes[]|undefined>;
+isLight = new BehaviorSubject<Boolean>(true);
 
-  MyMemos?=new Subject<Notes[]|undefined>;
-  
 
 
-    constructor(private http : HttpClient ,
+
+constructor(private http : HttpClient ,
         private auth:AuthService){};
-    server:string="https://memos-app.herokuapp.com";
+server:string="http://127.0.0.1:8000";
 ShowNotes(){
-    // return this.http.get<Notes>(
-    //     this.server +"/posts"
-        
-    // )
+
     
     return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
         
         const token = user?.token;
        
-        return  this.http.get<Notes[]|[]>(this.server+'/posts',{
-            headers: new HttpHeaders({
-              'Authorization' : 'Bearer '+token
-            })
-          })    
+        return  this.http.get<Notes[]|[]>(this.server+'/posts')    
        
     }
  )    )
 }
     
-CreateNote(values:{name:string; content:string}){
-    return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
+CreateNote(values:{name:string; content:string, published:Boolean}){
+    return this.auth.UserData.pipe(take(1), exhaustMap(
+      user=>{
         
         const token = user?.token;
        
-        return    this.http.post(this.server+'/posts',values,{
-            headers: new HttpHeaders({
-              'Authorization' : 'Bearer '+token
-            })
-          })    
+        return    this.http.post(this.server+'/posts',values
+            
+            
+            
+          )    
        
     }
  )    )
@@ -56,23 +52,43 @@ CreateNote(values:{name:string; content:string}){
 }
 
 
-DeletPost(id:number){
-    return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
+// DeletPost(id:number){
+//     return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
         
-        const token = user?.token;
+//         const token = user?.token;
        
-        return    this.http.delete(this.server+'/posts/'+id,{
-            headers: new HttpHeaders({
-              'Authorization' : 'Bearer '+token
-            })
-          })    
-       
-    }
- )    )
+//         return    this.http.put(this.server+'/posts/totrash/'+id,{
 
+//             headers: new HttpHeaders({
+//               'Authorization' : 'Bearer '+token
+
+//             })
+//           })    
+       
+//     }
+//  )    )
+
+
+// }
+
+send_to_trash(id :number){
+  return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
+      
+      const token = user?.token;
+      console.log(token)
+     
+      return    this.http.put(this.server+'/posts/totrash/'+id, {
+          headers: new HttpHeaders({
+            
+            
+            'Authorization' : 'Bearer '+token
+          })
+        })    
+     
+  }
+)    )
 
 }
-
 
 
 UpdatePost(values:{name:string; content:string} , id :number){
@@ -80,7 +96,7 @@ UpdatePost(values:{name:string; content:string} , id :number){
       
       const token = user?.token;
      
-      return    this.http.put(this.server+'/posts'+'/'+id, values,{
+      return    this.http.put(this.server+'/posts/'+id, values,{
           headers: new HttpHeaders({
             'Authorization' : 'Bearer '+token
           })
@@ -91,5 +107,47 @@ UpdatePost(values:{name:string; content:string} , id :number){
 
 
 }
+
+
+trash(){
+  return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
+      
+      const token = user?.token;
+     
+      return    this.http.get<DeletedNotes[]>(this.server+'/trash',{
+          headers: new HttpHeaders({
+            'Authorization' : 'Bearer '+token
+          })
+        })    
+     
+  }
+)    )
+
+
+}
+
+untrash(id: number){
+return this.http.get(this.server+'/untrash/'+id)
+
+}
+
+
+// like(values:{post_id :number , dir: number}){
+//   return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
+//     const token = user?.token;
+//     return this.http.post(this.server +'/vote' ,values,{
+//       headers : new HttpHeaders({
+//         'Authorization' : 'Bearer '+token
+
+//       })
+//     })
+//   }))
+
+// }
+
+// getLikes(post_id: number){
+//   return this.http.get<number>(this.server +post_id)
+// }
+
 
 }
