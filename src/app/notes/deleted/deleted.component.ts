@@ -3,7 +3,7 @@ import { Component,
    Input} from '@angular/core';
 import { DeletedNotes } from 'src/app/models/deleted.model';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { ManipulationService } from 'src/app/Manipulation.service';
+import { ManipulationService } from 'src/app/services/Manipulation.service';
 import { faTrashRestore } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 

@@ -20,7 +20,8 @@ import { TeximateModule } from 'ngx-teximate';
 import { MeComponent } from './notes/me/me.component';
 import { FixedComponent } from './directives/fixed.directive';
 import { DeletedComponent } from './notes/deleted/deleted.component';
-import { Intercepter } from './intercepter.service';
+import { Intercepter } from './services/intercepter.service';
+
 
 
 @NgModule({

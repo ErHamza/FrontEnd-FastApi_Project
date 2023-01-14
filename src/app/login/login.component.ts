@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../Auth.service';
+import { AuthService } from '../services/Auth.service';
 
 import { take, tap } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';

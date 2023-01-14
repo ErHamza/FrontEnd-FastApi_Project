@@ -2,14 +2,15 @@
 import { AfterContentInit, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../Auth.service';
-import { ManipulationService } from '../Manipulation.service';
+import { AuthService } from '../services/Auth.service';
+import { ManipulationService } from '../services/Manipulation.service';
 import { Notes } from '../models/Notes.model';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
 import { DeletedNotes } from '../models/deleted.model';
+import {map} from 'rxjs/operators'
 
 
 @Component({
@@ -23,7 +24,7 @@ export class NotesComponent implements OnInit,
   AfterContentInit,
   DoCheck
   {
-  posts?:Notes[];
+  posts?:Notes[] | [];
   deletedNotes?: DeletedNotes[];
   NoteSub?: Subscription;
   isAuth?:boolean=false;
@@ -64,7 +65,7 @@ export class NotesComponent implements OnInit,
     
 
   }
-//this function is invoked when the user creates a new Note
+
   addedNote(){
     this.toanimate=false;
     this.AddNote=false;
@@ -141,7 +142,7 @@ export class NotesComponent implements OnInit,
   getPosts(){
    this.NoteSub= this.manipulate.MyMemos?.subscribe(data=>{
       this.posts= data
-      // console.log(data)
+      
       this.isFetching=false;
 
     })
@@ -180,12 +181,6 @@ export class NotesComponent implements OnInit,
 
   ngDoCheck(): void {
     console.log("laaaa: ",this.posts)
-    // this.mode();
-    // console.log(this.LightMode)
-    // console.log(this.showMenu)
-    
-    // console.log(this.show)
-
     if (this.LightMode){
       this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'white');
     

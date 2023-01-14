@@ -1,13 +1,13 @@
 import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../Auth.service';
+import { AuthService } from '../services/Auth.service';
 import { faHome, faNoteSticky, faNotesMedical } from '@fortawesome/free-solid-svg-icons';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 
-import { ManipulationService } from '../Manipulation.service';
+import { ManipulationService } from '../services/Manipulation.service';
 
 
 @Component({

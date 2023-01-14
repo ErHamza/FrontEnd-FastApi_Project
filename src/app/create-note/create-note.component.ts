@@ -2,7 +2,7 @@ import { AfterContentInit, Component,
    ElementRef, OnDestroy, OnInit,
     Renderer2, ViewChild, Output, EventEmitter} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ManipulationService } from '../Manipulation.service';
+import { ManipulationService } from '../services/Manipulation.service';
 
 @Component({
   selector: 'app-create-note',

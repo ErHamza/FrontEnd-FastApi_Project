@@ -3,8 +3,8 @@ import { AfterContentInit, Component,
    ElementRef,
    OnInit, 
    Renderer2} from '@angular/core';
-import { AuthService } from './Auth.service';
-import { ManipulationService } from './Manipulation.service';
+import { AuthService } from './services/Auth.service';
+import { ManipulationService } from './services/Manipulation.service';
 
 @Component({
   selector: 'app-root',

@@ -1,17 +1,17 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-import { exhaustAll, exhaustMap, take } from "rxjs/operators";
+import { exhaustAll, exhaustMap, map, take } from "rxjs/operators";
 import { AuthService } from "./Auth.service";
-import { Notes } from "./models/Notes.model";
+import { Notes } from "../models/Notes.model";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
-import { DeletedNotes } from "./models/deleted.model";
+import { DeletedNotes } from "../models/deleted.model";
 
 @Injectable({
     providedIn:'root'
 })
 export class ManipulationService{
-MyMemos?=new Subject<Notes[]|undefined>;
+MyMemos?=new Subject<Notes[] | [] >;
 isLight = new BehaviorSubject<Boolean>(true);
 
 
@@ -27,7 +27,21 @@ ShowNotes(){
         
         const token = user?.token;
        
-        return  this.http.get<Notes[]|[]>(this.server+'/posts')    
+        return  this.http.get<Notes[] | [] >(this.server+'/posts').pipe(map(
+    (data:Notes[]| [])=>{
+      data.map((note : Notes | undefined) =>{
+        if (note){
+          const toDate = new Date(note.created_at);
+        note.created_at = toDate;
+
+        }
+        
+      })
+      
+
+      
+    }
+        ))   
        
     }
  )    )

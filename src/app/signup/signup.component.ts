@@ -2,7 +2,7 @@
 
 import { AfterContentInit, Component, ElementRef, Inject, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../Auth.service';
+import { AuthService } from '../services/Auth.service';
 
 @Component({
   selector: 'app-signup',

@@ -1,7 +1,7 @@
 import { Component, DoCheck, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { ManipulationService } from 'src/app/Manipulation.service';
+import { ManipulationService } from 'src/app/services/Manipulation.service';
 import { Notes } from 'src/app/models/Notes.model';
 import { faExclamation,  } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
