@@ -11,7 +11,7 @@ import { DeletedNotes } from "../models/deleted.model";
     providedIn:'root'
 })
 export class ManipulationService{
-MyMemos?=new Subject<Notes[] | [] >;
+MyMemos?=new Subject<Notes[] | [] | undefined >;
 isLight = new BehaviorSubject<Boolean>(true);
 
 
@@ -27,21 +27,22 @@ ShowNotes(){
         
         const token = user?.token;
        
-        return  this.http.get<Notes[] | [] >(this.server+'/posts').pipe(map(
-    (data:Notes[]| [])=>{
-      data.map((note : Notes | undefined) =>{
-        if (note){
-          const toDate = new Date(note.created_at);
-        note.created_at = toDate;
+        return  this.http.get<Notes[] | [] >(this.server+'/posts')
+    //     .pipe(map(
+    // (data:Notes[]| [])=>{
+    //   data.map((note : Notes | undefined) =>{
+    //     if (note){
+    //       const toDate = new Date(note.created_at);
+    //     note.created_at = toDate;
 
-        }
+    //     }
         
-      })
+    //   })
       
 
       
-    }
-        ))   
+    // }
+    //     )) 
        
     }
  )    )
