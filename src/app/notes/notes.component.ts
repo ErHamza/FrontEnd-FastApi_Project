@@ -126,6 +126,7 @@ export class NotesComponent implements OnInit,
     if (this.isAuth){
       this.isFetching=true;
       this.manipulate.ShowNotes().subscribe(post=>{
+        console.log(post[0].created_at,"d", typeof post[0].created_at)
         this.manipulate.MyMemos?.next(post);
       })
 
@@ -180,7 +181,7 @@ export class NotesComponent implements OnInit,
   }
 
   ngDoCheck(): void {
-    console.log("laaaa: ",this.posts)
+    
     if (this.LightMode){
       this.renderer.setStyle(this.el.nativeElement.ownerDocument.body,'backgroundColor', 'white');
     

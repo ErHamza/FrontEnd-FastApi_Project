@@ -3,9 +3,9 @@ export class Notes{
         , public post_id: number, public user_id: number,
         public user_name: string, public email: string,
          public id_user: number,
-        public created_at : string
+        public created_at : string,
+        public deleted_at : string 
          ){}
-         get date(){
-            return new Date(Date.parse(this.created_at))
-         }
+      
 }
+

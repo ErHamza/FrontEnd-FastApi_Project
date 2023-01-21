@@ -21,6 +21,7 @@ import { MeComponent } from './notes/me/me.component';
 import { FixedComponent } from './directives/fixed.directive';
 import { DeletedComponent } from './notes/deleted/deleted.component';
 import { Intercepter } from './services/intercepter.service';
+import { Moment } from 'moment';
 
 
 

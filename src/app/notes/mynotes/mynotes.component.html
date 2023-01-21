@@ -88,7 +88,8 @@ class="list-group" *ngFor="let post of postsList">
     </div>
          <div class="card-footer">
            <fa-icon class="faHeart" [icon]="faHeart" (click)="liker(post.post_id)"></fa-icon>
-          <p class="time"> {{ post.created_at | date}} </p>
+
+           <p class="time"> {{ P(post.created_at) | date : 'medium'  }} </p>
          
          </div>
       <!-- <div class="card-footer" > -->

@@ -8,9 +8,11 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { Moment } from 'moment';
 
 
 import { state, transition, trigger, style, animate } from '@angular/animations';
+import * as moment from 'moment';
 
 
 @Component({
@@ -60,6 +62,7 @@ export class MynotesComponent implements OnInit, OnDestroy, DoCheck {
   faHeart=faHeart;
   
   
+  
 
 
   @Input() toAnimate? : any;
@@ -76,6 +79,16 @@ editMode? : boolean=false;
 default=true;
 
   constructor(private manipulate: ManipulationService) { }
+
+  P(dateString :string){
+    // const format1 = "YYYY-MM-DD HH:mm:ss";
+    // const date1 = new Date(S);
+    // const t =moment(date1).format(format1);
+    // console.log(t)
+    
+  return  new Date(dateString)
+  
+}
  
   
 
@@ -158,11 +171,11 @@ httpModify(post_id_ :number){
 liker(post_id :number ,dir=1){
 
 
-// this.manipulate.like({ post_id , dir  }).subscribe()
+this.manipulate.like({ post_id , dir  }).subscribe()
 }
 
 likes(id:number){
-  //  return this.manipulate.getLikes(id).subscribe();
+   return this.manipulate.getLikes(id).subscribe();
 }
 
 

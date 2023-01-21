@@ -21,49 +21,21 @@ constructor(private http : HttpClient ,
         private auth:AuthService){};
 server:string="http://127.0.0.1:8000";
 ShowNotes(){
-
-    
-    return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
+  return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
         
         const token = user?.token;
        
         return  this.http.get<Notes[] | [] >(this.server+'/posts')
-    //     .pipe(map(
-    // (data:Notes[]| [])=>{
-    //   data.map((note : Notes | undefined) =>{
-    //     if (note){
-    //       const toDate = new Date(note.created_at);
-    //     note.created_at = toDate;
-
-    //     }
-        
-    //   })
-      
-
-      
-    // }
-    //     )) 
        
     }
  )    )
 }
     
 CreateNote(values:{name:string; content:string, published:Boolean}){
-    return this.auth.UserData.pipe(take(1), exhaustMap(
-      user=>{
-        
-        const token = user?.token;
        
         return    this.http.post(this.server+'/posts',values
-            
-            
-            
+
           )    
-       
-    }
- )    )
-
-
 }
 
 
@@ -147,22 +119,16 @@ return this.http.get(this.server+'/untrash/'+id)
 }
 
 
-// like(values:{post_id :number , dir: number}){
-//   return this.auth.UserData.pipe(take(1), exhaustMap(user=>{
-//     const token = user?.token;
-//     return this.http.post(this.server +'/vote' ,values,{
-//       headers : new HttpHeaders({
-//         'Authorization' : 'Bearer '+token
+like(values:{post_id :number , dir: number}){
+  
+  
+    return this.http.post(this.server +'/vote' ,values)
 
-//       })
-//     })
-//   }))
+}
 
-// }
-
-// getLikes(post_id: number){
-//   return this.http.get<number>(this.server +post_id)
-// }
+getLikes(post_id: number){
+  return this.http.get<number>(this.server+'/vote/'+post_id)
+}
 
 
 }
